@@ -1,0 +1,174 @@
+<script type="text/ng-template" id="editSupplierQuotationModal.html">
+    <div class="modal-header">
+        <h4>{{modal.title}}</h4>
+    </div>
+    <div class="modal-body">
+    	<form name="show_form" class="form-horizontal" role="form" novalidate>
+    		<div class="form-group">
+	    		<label class="col-sm-2 control-label">Norma</label>
+	    		<div class="col-sm-10">
+      				<p class="form-control-static" ng-bind="modal.quote.standard"></p>
+    			</div>
+    		</div>
+    		<div class="form-group">
+	    		<label class="col-sm-2 control-label">Peso</label>
+	    		<div class="col-sm-10">
+      				<p class="form-control-static" ng-bind="modal.quote.weight + ' Kg'"></p>
+    			</div>
+    		</div>
+    		<div class="form-group">
+	    		<label class="col-sm-2 control-label">Preço</label>
+	    		<div class="col-sm-10">
+      				<p class="form-control-static" ng-bind="'R$ ' + modal.quote.price"></p>
+    			</div>
+    		</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Itens em estoque <strong>(Total - {{modal.stockTotal}} Kg)</strong>:</div>
+				<div class="panel-body">
+				    <div class="table-responsive wrapperStockTable">
+	  					<table class="table table-bordered stockTable">
+					        <thead>
+					          <tr>
+					            <th>Largura</th>
+					            <th>Comprimento</th>
+					            <th>Peso</th>
+					          </tr>
+					        </thead>
+					        <tbody>
+					          <tr ng-repeat="stock in modal.quote.stocks">
+					            <td>{{stock.width}}</td>
+					            <td>{{stock.length}}</td>
+					            <td>{{stock.weight}}</td>
+					          </tr>
+						    </tbody>
+					    </table>
+					</div>
+				</div>
+			</div>
+    	</form>
+    	<form name="request_form" role="form" novalidate>
+    		<div ng-class="{'form-group' : true, 'has-error' : request_form.weight.$dirty && request_form.weight.$invalid}">
+	    		<label for="weight">Peso p/ Compra (Toneladas)</label>
+    			<input id="weight" name="weight" type="number" class="form-control" ng-model="modal.weightToPurchase" placeholder="Peso..." min='1' integer required>
+    			<span class="help-block" ng-show="request_form.weight.$dirty && request_form.weight.$invalid">Valor inválido para "Peso"!</span>
+    		</div>
+    	</form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="request_form.$invalid" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="confirmSendPurchasePlanning.html">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+      <h4>{{title}}</h4>
+  </div>
+  <div class="modal-body">
+         <p>Deseja realmente encerrar o planejamento?</p>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+  </div>          
+</script>
+
+<script type="text/ng-template" id="progressSendPurchasePlanningModal.html">
+  <div class="modal-header">
+      <h4>Encerrando planejamento....</h4>
+  </div>
+  <div class="modal-body">
+    <div class="progress progress-striped active">
+      <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">100% Complete</span>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="approvePurchasePlanning.html">
+    <div class="modal-header">
+        <h4>{{modal.title}}</h4>
+    </div>
+    <div class="modal-body">
+		<form name="request_form" class="form-horizontal" role="form" novalidate>
+    		<div class="form-group">
+	    		<label class="col-sm-6 control-label" style="text-align:left;">Deseja aprovar o planejamento?</label>
+				<div class="radio-inline">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Sim
+				  </label>
+				</div>
+				<div class="radio-inline">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Não
+				  </label>
+				</div>
+    		</div>
+    		<div class="form-group">
+	    		<label class="col-sm-2 control-label">Observação</label>
+    		</div>
+    		<div class="form-group">
+	    		<div class="col-sm-12">
+      				<textarea class="form-control" rows="3"></textarea>
+    			</div>
+    		</div>
+		</form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="request_form.$invalid" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+
+<div class="container">
+    <div class="bs-example">
+    	<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    	<h4 ng-bind="subtitle + ' - Data Criação: ' + (purchasePlanning.createdDate|date:'dd/MM/yyyy')"></h4>
+	    <p>
+	      <button type="button" ng-class="{'btn' : true, 'btn-primary' : true, 'disabled': purchasePlanning.items.length == 0}" ng-click="sendPurchasePlanning()"><span class="glyphicon glyphicon-ok"></span> Finalizar Planejamento</button>
+	      <button type="button" ng-class="{'btn' : true, 'btn-primary' : true, 'disabled': purchasePlanning.items.length == 0}" ng-click="approvePurchasePlanning()"><span class="glyphicon glyphicon-ok"></span> Aprovar</button>
+	    </p>
+
+	    <div class="table-wrapper">
+		    <table id="purchasePlanningTable" class="table table-condensed table-striped">
+		      <thead>
+		        <tr>
+		          <th class="headcol onecol">Laminação</th>
+		          <th class="headcol twocol">Tratamento</th>
+		          <th class="headcol threecol">Espessura</th>
+		          <th class="headcol fourcol">Largura</th>
+		          <th class="headcol fivecol">Peso</th>
+		          <th class="headcol sixcol">Entrega</th>
+		          <th class="headcol sevencol">Tabela(BM)</th>
+		          <th ng-repeat="supplier in suppliers">{{supplier.name}}</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		      	<tr ng-repeat="quotationItem in purchasePlanning.items">
+		          <td class="headcol onecol"><div><strong>{{quotationItem.lamination|lamination}}</strong></div></td>
+		          <td class="headcol twocol"><div><strong>{{quotationItem.treatment|treatment}}</strong></div></td>
+		          <td class="headcol threecol"><div><strong>{{quotationItem.thickness|number:2}}</strong></div></td>
+		          <td class="headcol fourcol"><div><strong>largura</strong></div></td>
+		          <td class="headcol fivecol"><div><strong>{{quotationItem.weight}}</strong></div></td>
+		          <td class="headcol sixcol"><div><strong>10/10/2014</strong></div></td>
+		          <td class="headcol sevencol"><div><strong>{{quotationItem.cheapestPrice}}</strong></div></td>
+		          <td ng-repeat="quote in quotationItem.quotes">
+			        <div ng-class="{'thumbnail':true, 'thumbnailQuotation':true, 'thumbnailCheapestPrice':quote.price != null && quote.price == quotationItem.cheapestPrice, 'thumbnailMoreExpensivePrice':quotationItem.cheapestPrice != null && quote.price != quotationItem.cheapestPrice && quote.standard != null}"
+			        ng-click="editSupplierQuotation(quotationItem, quote)">
+			          <div class="caption">
+			            <p><label><span ng-bind-template="{{quote.standard}}"></span></label></p>
+			            <p><label><span ng-bind-template="{{quote.weight}} Kg" ng-show="quote.weight != null"></span></label></p>
+			            <p><label><span ng-bind-template="R$ {{quote.price}}" ng-show="quote.price != null"></span></label></p>
+			          </div>
+			        </div>
+			   	  </td>
+			   	</tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>

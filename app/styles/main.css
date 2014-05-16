@@ -1,0 +1,389 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+  color: #5a5a5a;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+#footer hr {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+#footer p {
+  margin: 0px;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -30px;
+  /* Pad bottom by footer height */
+  padding: 0 0 30px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 30px;
+}
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel-wrapper {
+  padding-top: 80px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 0 0 30px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.wrapperLogo {
+	display: block;
+	margin:100px 0;
+}
+
+.logo-minor {
+	margin:5px;
+}
+
+.bs-example {
+position: relative;
+margin-top: 70px;
+margin-left: 0;
+margin-right: 0;
+background-color: #fff;
+border-width: 1px;
+border-color: #ddd;
+border-radius: 4px 4px 0 0;
+box-shadow: none;
+}
+
+.bs-example:before {
+position: relative;
+top: 10px;
+left: 15px;
+font-size: 12px;
+font-weight: 700;
+color: #bbb;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.bs-example p {
+  padding-top: 10px;
+}
+
+.bs-example h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.bs-example th {
+  text-align: center;
+}
+
+.bs-example td {
+  text-align: center;
+}
+
+.table-wrapper { 
+  width: auto; 
+  min-width: 300px;
+  overflow-x:auto;  
+  margin-left:595px;
+  overflow-y:auto;
+}
+
+.headcol {
+  position:absolute;
+}
+
+.headcol div {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  min-height: 103px;
+}
+
+.onecol {
+  left:0;
+  width:100px;
+}
+
+.twocol {
+  left:100px;
+  width:100px;
+}
+
+.threecol {
+  left:200px;
+  width:80px;
+}
+
+.fourcol {
+  left:280px;
+  width:80px;
+}
+
+.fivecol {
+  left:360px;
+  width:50px;
+}
+
+.sixcol {
+  left:410px;
+  width:100px;
+}
+
+.sevencol {
+  left:510px;
+  width:86px;
+}
+
+.modal-body {
+  padding: 10px 20px;
+}
+.modal-header {
+  padding: 5px 15px;
+}
+
+.modal-footer {
+  margin-top: 5px;
+  padding: 9px 10px 10px;
+}
+
+#quotationTable td {
+  vertical-align: middle;
+}
+
+#quotationTable .thumbnail {
+  margin-bottom: 2px;
+}
+
+.thumbnailQuotation {
+  min-height: 103px;
+  border: 1px solid #B8B4B4;
+}
+
+.thumbnailCheapestPrice {
+  background-color: #6CDBFC;
+}
+
+.thumbnailMoreExpensivePrice {
+  background-color: #D6F2FA;
+}
+
+.thumbnailQuotation:hover, .thumbnailQuotation:focus {
+  color: #333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.thumbnailQuotation p {
+  padding: 0;
+  margin: 0;
+  min-width: 80px;
+}
+
+.wrapperStockTable {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.stockTable th {
+  text-align: center;
+}
+
+.stockTable td {
+  text-align: center;
+}
+
+.newStockForm {
+  margin-bottom: 10px;
+}
+
+.newStockForm a:last-child {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.wrapperProductTable {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.productTable th {
+  text-align: center;
+}
+
+.productTable td {
+  text-align: center;
+}
+
+#viewer {
+  width:100%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.pdfpage {
+  margin: 15px 10px;
+
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px#888;
+  box-shadow: 0 0 5px #888;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+  .bs-example {
+    margin-top: 90px;
+  }
+
+  /* Remove the edge padding needed for mobile */
+  .marketing {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left:  15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left:  0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+
+  .navbar-form.navbar-right:last-child {
+    margin-right: 0px;
+  }
+
+  .navbar-form.navbar-right button {
+    margin-right: 15px;
+  }
+
+  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -25px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}

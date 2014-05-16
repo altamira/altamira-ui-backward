@@ -1,0 +1,19 @@
+<div class="container carousel-wrapper">
+    <div class="hidden-xs" ng-controller="CarouselDemoCtrl">
+        <carousel interval="interval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>{{slide.caption}}</h4>
+            </div>
+          </slide>
+        </carousel>
+    </div>
+</div>
+<div class="visible-xs">
+  <div class="wrapperLogo">
+    <img ng-src="images/logo.png" class="img-responsive center-block">
+  <div>
+</div>
+
+
