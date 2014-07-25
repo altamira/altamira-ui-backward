@@ -220,14 +220,14 @@ angular.module('altamiraUiApp')
 
             // Ser for um novo ítem adicioná-o ao final da lista antes de enviar. Se for uma edição os dados já foram atualizados localmente.
             if (item.id === 0) {
-              $scope.request.all('items').post(item).then(function (data) {
+              $scope.request.all('item').post(item).then(function (data) {
                 $log.info(data);
 
                 $scope.getCurrentRequest();
               });
             } else {
               $log.info(editedItem);
-              $scope.request.all('items').customPUT(item, item.id).then(function (data) {
+              $scope.request.all('item').customPUT(item, item.id).then(function (data) {
                 $log.info(data);
 
                 $scope.getCurrentRequest();

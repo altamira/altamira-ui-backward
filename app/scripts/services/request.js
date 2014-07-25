@@ -2,7 +2,7 @@
 
 angular.module('altamiraUiApp')
   .factory('Request', function (Restangular) {
-    var request = Restangular.all('requests');
+    var request = Restangular.all('request');
 
     var treatments = [{ desc : 'Chapa Preta', value : 'PR' }, { desc : 'Decapado', value : 'DE' }, { desc : 'Galvanizado', value : 'GA' }];
 

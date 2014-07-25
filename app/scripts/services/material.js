@@ -2,7 +2,7 @@
 
 angular.module('altamiraUiApp')
   .factory('Material', function (Restangular) {
-    var Material = Restangular.all('materials');
+    var Material = Restangular.all('material');
 
     // Public API...
     return {
